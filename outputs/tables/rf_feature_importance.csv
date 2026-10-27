@@ -1,0 +1,18 @@
+feature,importance
+minimum_nights,0.2058995486071822
+calculated_host_listings_count,0.1374019756448253
+availability_365,0.12437121009943687
+neighbourhood_group_cleansed_Manhattan,0.10651565969962508
+number_of_reviews,0.08890524120852845
+accommodates,0.08822433451259601
+bedrooms,0.08601232698225306
+review_scores_rating,0.05240745331330088
+room_type_Private room,0.03291860375794004
+room_type_Entire home/apt,0.031163134243864195
+beds,0.030834703823220462
+neighbourhood_group_cleansed_Brooklyn,0.005943727095243079
+room_type_Hotel room,0.004687121331931878
+neighbourhood_group_cleansed_Queens,0.002137873715185895
+neighbourhood_group_cleansed_Bronx,0.0014970286040744405
+neighbourhood_group_cleansed_Staten Island,0.0006790690158031697
+room_type_Shared room,0.00040098834498895

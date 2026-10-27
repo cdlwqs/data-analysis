@@ -1,0 +1,39 @@
+D:\CDA\商业数据分析大作业\scripts\04_visuals.py:131: FutureWarning: The default of observed=False is deprecated and will be changed to True in a future version of pandas. Pass observed=False to retain current behavior or observed=True to adopt the future default and silence this warning.
+  reviews = d.groupby(pd.cut(d["price"], bins=bins))["number_of_reviews"].sum().values
+D:\CDA\商业数据分析大作业\scripts\04_visuals.py:189: FutureWarning: 
+
+Passing `palette` without assigning `hue` is deprecated and will be removed in v0.14.0. Assign the `x` variable to `hue` and set `legend=False` for the same effect.
+
+  sns.boxplot(data=d, x="neighbourhood_group_cleansed", y="price", ax=ax, order=order,
+D:\CDA\商业数据分析大作业\scripts\04_visuals.py:206: FutureWarning: The default value of observed=False is deprecated and will change to observed=True in a future version of pandas. Specify observed=False to silence this warning and retain the current behavior
+  pivot = d.pivot_table(index="price_bin", columns="avail_bin", values="id", aggfunc="count").fillna(0)
+============================================================
+04_visuals.py — 纽约 Airbnb 可视化（19 张图）
+============================================================
+载入 listings_clean.csv：(19203, 93)
+
+模板复现类 12 张：
+  saved fig01_房型分布_柱形图.png
+  saved fig02_月度评论趋势_折线图.png
+  saved fig03_行政区占比_饼图.png
+  saved fig04_价格评论数_双轴组合图.png
+  saved fig05_行政区房型_堆积柱形图.png
+  saved fig06_价格评分_散点图.png
+  saved fig07_行政区价格_箱线图.png
+  saved fig08_价格可住天数_热力图.png
+  saved fig09_Top10街区房源_水平条形图.png
+  saved fig10_房型占比_圆环图.png
+  saved fig11_聚类特征_雷达图.png
+  saved fig12_各月新增房东_棒棒糖图.png
+
+业务模型类 7 张：
+  saved fig13_KMeans聚类_散点图.png
+  saved fig14_特征重要性_条形图.png
+  saved fig15_定价预测_残差图.png
+  saved fig16_房东价值_分层图.png
+  saved fig17_地理价格_散点图.png
+  saved fig18_街区帕累托图.png
+  saved fig19_评论趋势_移动平均.png
+
+全部完成，图片已输出到 D:\CDA\商业数据分析大作业\outputs\figures
+完成。
