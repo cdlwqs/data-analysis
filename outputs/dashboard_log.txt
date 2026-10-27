@@ -1,3 +1,0 @@
-D:\CDA\商业数据分析大作业\scripts\05_dashboard.py:154: MatplotlibDeprecationWarning: The 'labels' parameter of boxplot() has been renamed 'tick_labels' since Matplotlib 3.9; support for the old name will be dropped in 3.11.
-  ax6.boxplot(groups, labels=labels, patch_artist=True,
-saved D:\CDA\商业数据分析大作业\outputs\figures\dashboard.png
