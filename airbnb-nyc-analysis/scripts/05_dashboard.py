@@ -104,7 +104,7 @@ def snapshot():
         fig.text(x, 0.855, val, ha="center", fontsize=18, fontweight="bold", color=col)
         fig.text(x, 0.875, "─" * 12, ha="center", fontsize=8, color="#E5E7EB")
 
-    gs = fig.add_gridspec(2, 3, top=0.80, bottom=0.06, left=0.06, right=0.97,
+    gs = fig.add_gridspec(2, 3, top=0.80, bottom=0.28, left=0.06, right=0.97,
                           hspace=0.45, wspace=0.32)
 
     # 1. 各行政区房源数（水平柱形 + 渐变）
@@ -179,6 +179,32 @@ def snapshot():
     ax6.set_title("各行政区评分分布", color=C_DARK)
     ax6.set_ylabel("评分")
     ax6.tick_params(axis="x", rotation=20)
+
+    # ---- 筛选器面板 ----
+    fig.text(0.06, 0.255, "🔍 筛选条件（联动）", fontsize=11, fontweight="bold", color=C_DARK)
+    filters = [("行政区", "全选(5)"), ("房型", "全选(4)"), ("价格范围", "$0 ~ $2,000")]
+    for i, (flabel, fval) in enumerate(filters):
+        fx = 0.06 + i * 0.16
+        fig.text(fx, 0.225, f"▼ {flabel}", fontsize=9, color="#6B7280")
+        fig.text(fx, 0.205, fval, fontsize=9, fontweight="bold", color=C_BLUE,
+                bbox=dict(boxstyle="round,pad=0.3", facecolor="#F3F4F6", edgecolor="#D1D5DB"))
+
+    # ---- Top10 高价房源表 ----
+    fig.text(0.50, 0.255, "Top10 高价房源", fontsize=11, fontweight="bold", color=C_DARK)
+    top10 = df.nlargest(10, "price")[["neighbourhood_cleansed", "room_type", "price", "review_scores_rating"]].copy()
+    top10["price"] = top10["price"].apply(lambda x: f"${x:.0f}")
+    top10["review_scores_rating"] = top10["review_scores_rating"].apply(lambda x: f"{x:.2f}" if pd.notna(x) else "—")
+    top10.columns = ["街区", "房型", "价格", "评分"]
+    col_labels = list(top10.columns)
+    cell_vals = top10.values.tolist()
+    tbl = fig.add_axes([0.50, 0.02, 0.46, 0.22])
+    tbl.axis("off")
+    table = tbl.table(cellText=cell_vals, colLabels=col_labels,
+                      cellLoc="center", loc="center",
+                      colColours=["#E0E7FF"] * len(col_labels))
+    table.auto_set_font_size(False)
+    table.set_fontsize(8)
+    table.scale(1, 1.2)
 
     out = FIG / "dashboard.png"
     fig.savefig(out, bbox_inches="tight", facecolor="white")
